@@ -19,28 +19,38 @@
             
     
         <div class="col-12 col-md-4 col-lg-4 mb-4 ">
-      @foreach(Pizza pizza in Model)
-        {
-           
-            <div class=" card-over  w-75 mb-5 mx-auto ">
-                <img src="@pizza.Image" class="shad card-img-top rounded-5 " alt="@pizza.Name">
+            @if(Model == null)
+            {
+                <h1>non ci sono pizze, torna a trovarci!</h1>
+            }
+            else
+            {
 
-                <div class="border-3  mt-2">
-                    <h5>@pizza.Name</h5>
-                    <p>@pizza.Description</p>
+              @foreach(Pizza pizza in Model)
+                {
+                    
+                    <div class=" card-over  w-75 mb-5 mx-auto ">
+                        <img src="@pizza.Image" class="shad card-img-top rounded-5 " alt="@pizza.Name">
 
-                    <h5>@pizza.Price$</h5>
+                        <div class="border-3  mt-2">
+                            <h5>@pizza.Name</h5>
+                            <p>@pizza.Description</p>
+
+                            <h5>@pizza.Price$</h5>
 
 
-                </div>
-                <div class=" gap-2 d-sm-block d-md-block mb-3">
-                    <button class="btn btn-outline-warning" type="button">add to cart</button>
+                        </div>
+                        <div class=" gap-2 d-sm-block d-md-block mb-3">
+                            <button class="btn btn-outline-warning" type="button">add to cart</button>
+                            <a href="@Url.Action("Details", "Pizza", new {id = pizza.Id})" class="btn btn-primary " role="button">Details</a>
+                        </div>
 
-                </div>
-
-            </div>
+                    </div>
         
-         }
+                 }
+            }
+           
+
 
           
          </div>
