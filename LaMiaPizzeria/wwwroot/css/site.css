@@ -4,6 +4,7 @@
     padding:0;
     box-sizing:border-box;
     font-family: 'Playfair Display', serif;
+    
 }
 html {
     font-size: 14px;
@@ -16,12 +17,12 @@ html {
 
   }
 }
-
 html {
     position: relative;
     min-height: 100%;
     
 }
+
 
 body {
     margin-bottom: 60px;
@@ -31,6 +32,11 @@ body {
     background-size: cover;
    
 }
+a {
+    cursor: pointer;
+    
+}
+
 .bgi {
     background-color: #595247;
   
