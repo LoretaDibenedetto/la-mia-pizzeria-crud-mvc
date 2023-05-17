@@ -1,0 +1,54 @@
+﻿@model List<Pizza>
+
+
+<div class="container-md text-center text-white mb-5">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="my-5 ">
+                <h2 class="text-white p-4">
+                    MENU PIZZE
+
+                </h2>
+                <hr class="border border-danger border-2 opacity-50">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row mb-5">
+            
+    
+        <div class="col-12 col-md-4 col-lg-4 mb-4 ">
+      @foreach(Pizza pizza in Model)
+        {
+           
+            <div class=" card-over  w-75 mb-5 mx-auto ">
+                <img src="@pizza.Image" class="shad card-img-top rounded-5 " alt="@pizza.Name">
+
+                <div class="border-3  mt-2">
+                    <h5>@pizza.Name</h5>
+                    <p>@pizza.Description</p>
+
+                    <h5>@pizza.Price$</h5>
+
+
+                </div>
+                <div class=" gap-2 d-sm-block d-md-block mb-3">
+                    <button class="btn btn-outline-warning" type="button">add to cart</button>
+
+                </div>
+
+            </div>
+        
+         }
+
+          
+         </div>
+
+
+        <hr class="border border-danger border-2 opacity-50">
+
+
+    </div>
+</div>
+
