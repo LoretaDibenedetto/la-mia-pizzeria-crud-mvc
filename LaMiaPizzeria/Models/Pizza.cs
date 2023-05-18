@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using LaMiaPizzeria.Models.PersonalizedValidation;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
@@ -18,6 +19,7 @@ namespace LaMiaPizzeria.Models
 
         [Required(ErrorMessage = "Il campo nome è obbligatorio!")]
         [StringLength(100, ErrorMessage = "Il campo nome può essere lungo al massimo 100 caratteri")]
+        [PersonalValidation]
         public string Name { get; set; }
 
         
