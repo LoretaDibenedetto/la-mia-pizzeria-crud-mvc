@@ -9,16 +9,25 @@ namespace LaMiaPizzeria.Models
         [Key]
         public int Id { get; set; }
 
-        [MaxLength(100)]
+
+        [Required(ErrorMessage = "Il campo URL dell'immagine è obbligatorio")]
+        [Url(ErrorMessage = "L'URL inserito non è un url valido!")]
+        [StringLength(300, ErrorMessage = "Il campo URL immagine può contenere al massimo 300 caratteri")]
         public string Image { get; set; }
 
 
-        [MaxLength(100)]
+        [Required(ErrorMessage = "Il campo nome è obbligatorio!")]
+        [StringLength(100, ErrorMessage = "Il campo nome può essere lungo al massimo 100 caratteri")]
         public string Name { get; set; }
 
-
-        [MaxLength(400)]
+        
+   
+        [Required(ErrorMessage = "Il campo description è obbligatorio!")]
+        [StringLength(500, ErrorMessage = "Il campo description può essere lungo al massimo 500 caratteri")]
         public string Description { get; set; }
+
+        [Required(ErrorMessage = "Il campo prezzo è obbligatorio!")]
+        [Range(10.00, 999.99)]
         public float Price { get; set; }
 
         public Pizza(string image, string name, string description, float price)
@@ -29,6 +38,8 @@ namespace LaMiaPizzeria.Models
             Price = price;
 
         }
+
+        public Pizza() { }
 
 
 
