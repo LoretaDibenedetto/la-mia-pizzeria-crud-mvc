@@ -3,33 +3,36 @@
  
 <div class="container-md text-white">
  <div class="row">
-   <div class="col-6 m-auto">
+        <hr class="border border-danger border-2 opacity-50 my-5">
+   <div class="col-lg-4 col-md-6 col-sm-6 m-auto">
             <h2 class="mb-3">Aggiunta di un nuovo articolo</h2>
-            <form asp-controller="Pizza" asp-action="Create" method="post">
+            <form asp-controller="Pizza" asp-action="Create" method="post" class="my-5 ">
                 @Html.AntiForgeryToken()
                 <div class="mb-3">
-                    <label asp-for="Name" class="form-label">Titolo</label>
-                    <input asp-for="Name" type="text" class="form-control" required>
+                    <label asp-for="Name" class="form-label">Nome pizza</label>
+                    <input asp-for="Name" type="text" class="form-control bg-transparent text-white" placeholder="Inserisci il nome della pizza" required>
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label asp-for="Description" class="form-label">Descrizione</label>
-                    <textarea asp-for="Description" rows="10" class="form-control"></textarea>
+                    <textarea asp-for="Description" rows="10" class="form-control bg-transparent text-white" placeholder=" inserisci un url di un immagine"></textarea>
                     <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label asp-for="Image" class="form-label">URL Immagine</label>
-                    <input asp-for="Image" type="text" class="form-control" required>
+                    <input asp-for="Image" type="text" class="form-control bg-transparent text-white" placeholder="inserisci un url di un immagine" required>
                     <span asp-validation-for="Image" class="text-danger"></span>
                 </div>
                 <div class="my-3">
                     <label asp-for="Price">Prezzo</label>
-                    <input asp-for="Price" type="number" class="form-control" id="Price" step="0.01" placeholder="Enter price">
+                    <input asp-for="Price" type="number" class="form-control bg-transparent text-white" id="Price" step="0.01" placeholder="Enter price">
                     <span asp-validation-for="Price" class="text-danger"></span>
 
                 </div>
-                <button type="submit" class="btn btn-primary">Salva</button>
+                <p class="text-center"><button type="submit" class="btn btn-outline-danger ">Salva</button></p>
             </form>
         </div>
+        <hr class="border border-danger border-2 opacity-50 my-5">
+
     </div>
 </div>
