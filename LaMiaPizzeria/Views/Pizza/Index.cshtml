@@ -17,7 +17,11 @@
     <div class="row mb-5">
 
         <div class="  col-6 me-5 pe-5 mb-5">
+            @if (User.IsInRole("ADMIN"))
+            {
             <a href="@Url.Action("Create", "Pizza")" type="button" class=" btn btn-outline-danger  ">Crea Pizza</a>
+                
+            }
             
         </div>
     <div class="row mb-5">
