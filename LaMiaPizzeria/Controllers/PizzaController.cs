@@ -43,7 +43,7 @@ namespace LaMiaPizzeria.Controllers
         }
 
 
-     
+        [Authorize(Roles = "ADMIN")]
         [HttpGet]
         public IActionResult Create()
         {
@@ -62,7 +62,7 @@ namespace LaMiaPizzeria.Controllers
 
 
 
-
+        [Authorize(Roles = "ADMIN")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(PizzaModelForViews data)
@@ -101,7 +101,7 @@ namespace LaMiaPizzeria.Controllers
 
         }
 
-      
+        [Authorize(Roles = "ADMIN")]
         [HttpGet]
         public IActionResult Update(int id)
         {
@@ -123,7 +123,7 @@ namespace LaMiaPizzeria.Controllers
             }
         }
 
-
+        [Authorize(Roles = "ADMIN")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Update(int id, PizzaModelForViews data)
@@ -157,7 +157,7 @@ namespace LaMiaPizzeria.Controllers
         }
 
 
-
+        [Authorize(Roles = "ADMIN")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int id)
