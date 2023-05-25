@@ -34,14 +34,24 @@
 
                 </div>
                 <div class="mb-3">
-                    <select asp-for="@Model.Pizzaa.PizzaCategoryId" rows="10" class="d-block w-100">
+                    <select asp-for="Pizzaa.PizzaCategoryId" rows="10" class="d-block w-100">
                         <option value=""></option>
-                        @foreach (PizzaCategory Category in Model.PizzaCategories)
+                        @foreach (PizzaCategory Pizzacateg in Model.PizzaCategories)
                         {
-                            <option value="Category.Id" selected="@(Model.Pizzaa.PizzaCategoryId == Category.Id ? "selected" : null)">@Category.Title</option>
+                            @if (Model.Pizzaa.PizzaCategoryId == Pizzacateg.Id)
+                            {
+                                <option value="@Pizzacateg.Id" selected>@Pizzacateg.Title</option>
+                            }
+                            else
+                            {
+                                <option value="@Pizzacateg.Id">@Pizzacateg.Title</option>
+                            }
                         }
                     </select>
-                 </div>
+                </div>
+            
+
+
                 <p class="text-center border-bottom "><button type="submit" class="btn btn-outline-danger btn-lg my-3 ">Aggiorna articolo</button></p>
             </form>
         </div>

@@ -31,12 +31,27 @@
 
                 </div>
                 <div class="mb-3">
-                    <strong>Categoria:</strong>
+                   @* <strong>Categoria:</strong>
                     <select asp-for="Pizzaa.PizzaCategoryId" title="ProductCategory" rows="10" class="d-block w-100">
                         <option value=""></option>
                         @foreach (PizzaCategory category in Model.PizzaCategories ?? new List<PizzaCategory>())
                         {
                             <option value="@category.Id" selected="@(Model.Pizzaa.PizzaCategoryId == category.Id ? "selected" : null)">@category.Title</option>
+                        }
+                    </select>*@
+                    <strong>Sport:</strong>
+                    <select asp-for="Pizzaa.PizzaCategoryId" rows="10" class="d-block w-100">
+                        <option value=""></option>
+                        @foreach (PizzaCategory pizza in Model.PizzaCategories)
+                        {
+                            @if (Model.Pizzaa.PizzaCategoryId == pizza.Id)
+                            {
+                                <option value="@pizza.Id" selected>@pizza.Title</option>
+                            }
+                            else
+                            {
+                                <option value="@pizza.Id">@pizza.Title</option>
+                            }
                         }
                     </select>
                 </div>

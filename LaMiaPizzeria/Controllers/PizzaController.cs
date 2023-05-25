@@ -3,6 +3,7 @@ using LaMiaPizzeria.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Composition;
 
 namespace LaMiaPizzeria.Controllers
 {
@@ -88,7 +89,7 @@ namespace LaMiaPizzeria.Controllers
                 pizzaToCreate.Image = data.Pizzaa.Image;
                 pizzaToCreate.Price = data.Pizzaa.Price;
 
-                pizzaToCreate.Id = data.Pizzaa.Id;
+                pizzaToCreate.PizzaCategoryId = data.Pizzaa.PizzaCategoryId;
 
                 // impostiamo lo sport preferito dell'utente
 
@@ -102,7 +103,6 @@ namespace LaMiaPizzeria.Controllers
 
       
         [HttpGet]
-
         public IActionResult Update(int id)
         {
             using (PizzaContext context = new PizzaContext())
@@ -128,43 +128,36 @@ namespace LaMiaPizzeria.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Update(int id, PizzaModelForViews data)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-               using(PizzaContext ctx = new PizzaContext()) 
-                { 
-                List<PizzaCategory> pizzaCat = ctx.PizzaCategories.ToList();
-
-                data.PizzaCategories = pizzaCat;
-
-                return View("Update", data);
-                
-                }
-            }
-            else
-            {
-                using(PizzaContext context = new PizzaContext())
+                using (PizzaContext context = new PizzaContext())
                 {
-                    Pizza? pizzaToUpdate = context.Pizzas.Where(pizza => pizza.Id == id).FirstOrDefault();
-                    if (pizzaToUpdate == null)
-                    {
-                        return NotFound("La pizza non e' stata trovata");
-                    }else
-                    {
-                        pizzaToUpdate.Name= data.Pizzaa.Name;
-                        pizzaToUpdate.Description= data.Pizzaa.Description;
-                        pizzaToUpdate.Image = data.Pizzaa.Image;
-                        pizzaToUpdate.Price = data.Pizzaa.Price;
-                        pizzaToUpdate.PizzaCategoryId = data.Pizzaa.PizzaCategoryId;
-
-                        context.SaveChanges();
-                        return RedirectToAction("Index");   
-                    }
+                    List<PizzaCategory> sports = context.PizzaCategories.ToList();
+                    data.PizzaCategories = sports;
+                    return View("Update", data);
                 }
             }
-         
-
+            using (PizzaContext context = new PizzaContext())
+            {
+                Pizza? pizzaToEdit = context.Pizzas.Where(pizzas => pizzas.Id == id).FirstOrDefault();
+                if (pizzaToEdit != null)
+                {
+                    pizzaToEdit.Name = data.Pizzaa.Name;
+                    pizzaToEdit.Description = data.Pizzaa.Description;
+                    pizzaToEdit.Image = data.Pizzaa.Image;
+                    pizzaToEdit.PizzaCategoryId = data.Pizzaa.PizzaCategoryId;
+                    context.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
         }
-      
+
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int id)
