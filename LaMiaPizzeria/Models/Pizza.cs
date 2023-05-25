@@ -33,7 +33,7 @@ namespace LaMiaPizzeria.Models
         public float Price { get; set; }
 
         public int? PizzaCategoryId { get; set; }   
-        public PizzaCategory Category { get; set; }
+        public PizzaCategory? Category { get; set; }
 
         public Pizza(string image, string name, string description, float price)
         {
