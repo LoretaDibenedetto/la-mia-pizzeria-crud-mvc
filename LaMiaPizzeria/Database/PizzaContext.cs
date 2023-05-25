@@ -8,6 +8,7 @@ namespace LaMiaPizzeria.Database
     public class PizzaContext : IdentityDbContext<IdentityUser>
     {
         public DbSet<Pizza> Pizzas{ get; set; }
+        public DbSet<PizzaCategory> PizzaCategories { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

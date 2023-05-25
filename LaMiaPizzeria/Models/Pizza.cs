@@ -32,6 +32,9 @@ namespace LaMiaPizzeria.Models
         [Range(10.00, 999.99)]
         public float Price { get; set; }
 
+        public int? PizzaCategoryId { get; set; }   
+        public PizzaCategory Category { get; set; }
+
         public Pizza(string image, string name, string description, float price)
         {
            Image = image;

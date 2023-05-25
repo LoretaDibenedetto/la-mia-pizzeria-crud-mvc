@@ -43,28 +43,47 @@ namespace LaMiaPizzeria.Controllers
         }
 
 
-        [Authorize(Roles = "ADMIN")]
+     
         [HttpGet]
         public IActionResult Create()
         {
-            return View();
+           using (PizzaContext db = new PizzaContext())
+            {
+                List<PizzaCategory> pizzaCategory = db.PizzaCategories.ToList();
+
+                PizzaModelForViews model = new PizzaModelForViews();
+                model.Pizzaa = new Pizza();
+                model.PizzaCategories = pizzaCategory;
+
+
+               return View("Create", model);
+            }
         }
 
 
 
-        [Authorize(Roles = "ADMIN")]
+      
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Pizza newArticle)
+        public IActionResult Create(PizzaModelForViews data)
         {
             if (!ModelState.IsValid)
             {
-                return View("Create", newArticle);
+               using(PizzaContext db = new PizzaContext())
+                {
+                    List<PizzaCategory> pizzaCategories = db.PizzaCategories.ToList();
+                    data.PizzaCategories = pizzaCategories;
+
+                    return View("Create", data);
+                }
+
+
+
             }
 
             using (PizzaContext db = new PizzaContext())
             {
-                db.Pizzas.Add(newArticle);
+                db.Pizzas.Add(data.Pizzaa);
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
@@ -74,7 +93,7 @@ namespace LaMiaPizzeria.Controllers
 
 
 
-        [Authorize(Roles = "ADMIN")]
+      
         [HttpGet]
 
         public IActionResult Update(int id)
@@ -102,7 +121,7 @@ namespace LaMiaPizzeria.Controllers
             }
         }
 
-        [Authorize(Roles = "ADMIN")]
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Update(int id, Pizza newPizza)
@@ -114,7 +133,7 @@ namespace LaMiaPizzeria.Controllers
 
             using (PizzaContext db = new PizzaContext())
             {
-                Pizza? pizzaToModify = db.Pizzas.Where(article => article.Id == id).FirstOrDefault();
+                Pizza? pizzaToModify = db.Pizzas.Where(Pizza => Pizza.Id == id).FirstOrDefault();
 
                 if (pizzaToModify != null)
                 {
@@ -136,7 +155,7 @@ namespace LaMiaPizzeria.Controllers
             }
 
         }
-        [Authorize(Roles = "ADMIN")]
+      
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int id)
