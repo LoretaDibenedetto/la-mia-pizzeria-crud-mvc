@@ -2,9 +2,7 @@
 using LaMiaPizzeria.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
-
-
+using Microsoft.EntityFrameworkCore;
 
 namespace LaMiaPizzeria.Controllers
 {
@@ -24,7 +22,8 @@ namespace LaMiaPizzeria.Controllers
             using (PizzaContext db = new PizzaContext())
 
             {
-                Pizza? pizzaDetails = db.Pizzas.Where(article => article.Id == id).FirstOrDefault();
+                Pizza? pizzaDetails = db.Pizzas.Where(article => article.Id == id).Include(Pizza => Pizza.Category).FirstOrDefault(); 
+
 
 
                 if (pizzaDetails != null)

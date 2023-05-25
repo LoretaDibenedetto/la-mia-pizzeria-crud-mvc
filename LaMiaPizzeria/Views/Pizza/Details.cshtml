@@ -22,6 +22,18 @@
             </h3>
 
             <p>  @Model.Description</p>
+
+            <p>
+                <strong>Categoria:</strong>
+                @if (Model.Category != null)
+                {
+                    @Model.Category.Title
+                }
+                else
+                {
+                    <span>Nessuna categoria associata</span>
+                }
+            </p>
         </div>
     </div>
     <hr class="border border-danger border-2 opacity-50">
