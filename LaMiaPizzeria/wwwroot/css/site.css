@@ -52,7 +52,9 @@ form input::placeholder{
     background-color: #9BA4B5;
 }
 
-
+.bord{
+    border:1px solid white;
+}
 
 footer {
     width: 100%;
