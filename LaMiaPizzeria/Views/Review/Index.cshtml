@@ -2,33 +2,33 @@
 
 
   <div style="height:1000px" class="container-md  text-white">
-    <hr class="border border-danger border-2 opacity-50">
-    <div class="row justify-content-center">
+       <hr class="border border-danger border-2 opacity-50 mb-5">
+     <div class="row justify-content-center">
         <h2 class="text-center">Cosa dicono di noi</h2>
-      <div class="col-12">
+        <div class="col-sm-12 col-md-6 col-lg-4">
 
-        @foreach(Review review in Model)
-        {
-            <div class="bord rounded-2 p-3 mb-3 text-white">
-                <div class="border-bottom pb-3 mb-2">
-                <strong>User:</strong>
-                <span>@review.Name</span>
-                </div>
+            @foreach(Review review in Model)
+            {
+                <div class="bord rounded-2 p-3 mb-3 text-white">
+                    <div class="border-bottom pb-3 mb-2">
+                    <strong>User:</strong>
+                    <span>@review.Name</span>
+                    </div>
                 
-                <p>@review.Description</p>
-                    <a href="@Url.Action("Update", "Review", new {id = review.Id})" class="btn btn-outline-warning"> update</a>
-                    <form asp-controller="Review" asp-action="Delete" asp-route-id="@review.Id" method="post">
-                        @Html.AntiForgeryToken()
-                        <button type="submit" class="btn btn-outline-danger btn-sm mt-2">
-                        Delete
-                        </button>
-                    </form>
-            </div>
-         }
-         <div class="mt-5">
-                <a asp-controller="Review" asp-action="Create" class="btn btn-outline-success"> Scrivi una recensione </a>
-         </div>
-     </div>
+                    <p>@review.Description</p>
+                        <a href="@Url.Action("Update", "Review", new {id = review.Id})" class="btn btn-outline-warning"> update</a>
+                        <form asp-controller="Review" asp-action="Delete" asp-route-id="@review.Id" method="post">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-outline-danger btn-sm mt-2">
+                            Delete
+                            </button>
+                        </form>
+                </div>
+             }
+             <div class="my-5">
+                    <a asp-controller="Review" asp-action="Create" class="btn btn-outline-light"> Scrivi una recensione </a>
+             </div>
+        </div>
     </div>
     <hr class="border border-danger border-2 opacity-50">
 </div>

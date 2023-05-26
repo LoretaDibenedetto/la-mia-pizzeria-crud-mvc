@@ -28,12 +28,10 @@ html {
 
 
 body {
-   
-    background-color: #191825;
+    background-color: #212A3E;
     /*  background-image: url('../NewFolder/ssspot.svg');*/
     background-repeat: no-repeat;
     background-size: cover;
-    
 }
 
 
@@ -51,18 +49,10 @@ form input::placeholder{
 
 
 .bgi {
-    background-color: #F6F1F1;
+    background-color: #9BA4B5;
 }
 
-.bord {
-    border: 1px solid white;
-    
-    
 
-
-   
-
-}
 
 footer {
     width: 100%;
