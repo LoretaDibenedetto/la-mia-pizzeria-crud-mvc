@@ -97,7 +97,27 @@ namespace LaMiaPizzeria.Controllers
         }
 
 
+        public IActionResult Delete(int id)
+        {
+            using (PizzaContext db = new PizzaContext())
+            {
+                Review? reviewToDelete = db.Reviews.Where(review => review.Id == id).FirstOrDefault();
 
+                if (reviewToDelete != null)
+                {
+                    db.Remove(reviewToDelete);
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index");
+
+                }
+                else
+                {
+                    return NotFound("Non ho torvato la recensione da eliminare");
+
+                }
+            }
+        }
 
 
 
