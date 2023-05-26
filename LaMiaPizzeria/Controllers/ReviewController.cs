@@ -45,10 +45,56 @@ namespace LaMiaPizzeria.Controllers
         }
 
 
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+          using (PizzaContext db = new PizzaContext()) 
+            {
+            Review? reviewToUpdate = db.Reviews.Where(review  => review.Id == id).FirstOrDefault();  
 
+                if (reviewToUpdate == null)
+                {
+                    return NotFound();
+                } 
 
+                return View(reviewToUpdate);
+              
+            }
+        
+       
+        }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Update(int id, Review modifiedReview)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Update", modifiedReview);
+            }
 
+            using (PizzaContext db = new PizzaContext())
+            {
+                Review? reviewToModify = db.Reviews.Where(review => review.Id == id).FirstOrDefault();
+
+                if (reviewToModify != null)
+                {
+
+                    reviewToModify.Name = modifiedReview.Name;
+                    reviewToModify.Description = modifiedReview.Description;
+                    
+
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+
+                }
+                else
+                {
+                    return NotFound("L'articolo da modificare non esiste!");
+                }
+            }
+
+        }
 
 
 

@@ -13,7 +13,9 @@
                 <span>@review.Name</span>
                 </div>
                 
-                <p>@review.Description</p>      
+                <p>@review.Description</p>
+                    <a href="@Url.Action("Update", "Review", new {id = review.Id})" class="btn btn-outline-warning"> update</a>
+                    <a asp-controller="Review" asp-action="Create" class="btn btn-outline-light"> + </a>
             </div>
          }
          <div class="mt-5">
