@@ -26,11 +26,11 @@ html {
 
 body {
     margin-bottom: 60px;
-    background-color: #262625;
+    background-color: #191825;
     /*  background-image: url('../NewFolder/ssspot.svg');*/
     background-repeat: no-repeat;
     background-size: cover;
-   
+    
 }
 a {
     cursor: pointer;
@@ -42,8 +42,7 @@ form input::placeholder{
 
 
 .bgi {
-    background-color: #595247;
-  
+    background-color: #F6F1F1;
 }
 
 

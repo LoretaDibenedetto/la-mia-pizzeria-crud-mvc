@@ -27,14 +27,14 @@
                         {
 
                             <div class="carousel-item @(i == 0 ? "active" : "")">
-                                <img height="400" src="@pizzeSpeciali[i].Image" class="border-3 align-content-center" alt="...">
-                                <div class="carousel-caption bg-black bg-opacity-50 d-none d-md-block mt-5">
+                                <img height="400" src="@pizzeSpeciali[i].Image" class="border-3 align-content-center rounded" alt="...">
+                                <div class="carousel-caption bg-black bg-opacity-50 d-none d-md-block mt-5 rounded">
                                     <h5>@pizzeSpeciali[i].Name</h5>
                                     <p>@pizzeSpeciali[i].Description</p>
                                 </div>
                             </div>
                         }
-                        }
+                        
                     </div>
                     <button class="carousel-control-prev btn-dark" type="button" data-bs-target="#carouselMonitor" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -116,9 +116,9 @@
             
 
 
-        <hr class="border border-danger border-2 opacity-50">
 
 
+                            <hr class="border border-danger border-2 opacity-50">
     </div>
 </div>
 

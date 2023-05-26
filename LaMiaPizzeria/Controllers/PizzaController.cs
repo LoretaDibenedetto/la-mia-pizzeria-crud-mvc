@@ -18,6 +18,7 @@ namespace LaMiaPizzeria.Controllers
             }
         }
 
+
         public IActionResult Details(int id)
         {
             using (PizzaContext db = new PizzaContext())
@@ -81,7 +82,7 @@ namespace LaMiaPizzeria.Controllers
 
             }
 
-            using (PizzaContext context = new PizzaContext())
+            using (PizzaContext db = new PizzaContext())
             {
                 Pizza pizzaToCreate = new Pizza();
                 pizzaToCreate.Name = data.Pizzaa.Name;
@@ -93,28 +94,29 @@ namespace LaMiaPizzeria.Controllers
 
                 // impostiamo lo sport preferito dell'utente
 
-                context.Pizzas.Add(pizzaToCreate);
-                context.SaveChanges();
+                db.Pizzas.Add(pizzaToCreate);
+                db.SaveChanges();
                 return RedirectToAction("Index");
 
             }
 
         }
 
+
         [Authorize(Roles = "ADMIN")]
         [HttpGet]
         public IActionResult Update(int id)
         {
-            using (PizzaContext context = new PizzaContext())
+            using (PizzaContext db = new PizzaContext())
             {
-                Pizza pizzaToUpdate = context.Pizzas.Where(Pizza => Pizza.Id == id).FirstOrDefault();
+                Pizza pizzaToUpdate = db.Pizzas.Where(Pizza => Pizza.Id == id).FirstOrDefault();
                 if (pizzaToUpdate == null)
                 {
                     return NotFound();
                 }
                 else
                 {
-                    List<PizzaCategory> pizzeCategorie = context.PizzaCategories.ToList();
+                    List<PizzaCategory> pizzeCategorie = db.PizzaCategories.ToList();
                     PizzaModelForViews model = new PizzaModelForViews();
                     model.Pizzaa = pizzaToUpdate;
                     model.PizzaCategories = pizzeCategorie;
@@ -123,6 +125,7 @@ namespace LaMiaPizzeria.Controllers
             }
         }
 
+
         [Authorize(Roles = "ADMIN")]
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -130,9 +133,9 @@ namespace LaMiaPizzeria.Controllers
         {
             if (!ModelState.IsValid)
             {
-                using (PizzaContext context = new PizzaContext())
+                using (PizzaContext db = new PizzaContext())
                 {
-                    List<PizzaCategory> sports = context.PizzaCategories.ToList();
+                    List<PizzaCategory> sports = db.PizzaCategories.ToList();
                     data.PizzaCategories = sports;
                     return View("Update", data);
                 }
