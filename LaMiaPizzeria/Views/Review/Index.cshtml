@@ -1,0 +1,9 @@
+﻿@model List<Review>
+
+
+@foreach(Review review in Model){
+    <div class=" text-white">
+    <p>@review.Name</p>
+    <p>@review.Description</p>
+    </div>
+}

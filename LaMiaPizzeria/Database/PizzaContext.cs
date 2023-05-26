@@ -6,9 +6,13 @@ using Microsoft.EntityFrameworkCore;
 namespace LaMiaPizzeria.Database
 {
     public class PizzaContext : IdentityDbContext<IdentityUser>
-    {
+    {   
+
+        
         public DbSet<Pizza> Pizzas{ get; set; }
         public DbSet<PizzaCategory> PizzaCategories { get; set; }
+
+        public DbSet<Review> Reviews { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
