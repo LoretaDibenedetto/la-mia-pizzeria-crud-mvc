@@ -8,7 +8,8 @@
         <div class="col-12">
             <div class="my-5 ">
                 <h2 class="text-white p-4">
-                    MENU' DELLE PIZZE
+
+                      MENU' DELLE PIZZE
 
                 </h2>
                 <hr class="border border-danger border-2 opacity-50">
@@ -18,7 +19,7 @@
 
     <div class="row">
         <div class="col-12 text-white mb-5">
-        <h3>PIzze speciali</h3>
+        <h3>Pizze speciali</h3>
             <div class="p-3 m-auto">
                 <div id="carouselMonitor" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
@@ -76,25 +77,23 @@
                        
                  <div class="col-12 col-md-4 col-lg-4 mb-4 ">
                     
-                    <div class=" card-over  w-75 mb-5 mx-auto ">
+                    <div class=" card-over  w-75  mb-5 mx-auto ">
                         <img src="@pizza.Image" class="shad card-img-top rounded-5 " alt="@pizza.Name">
 
-                        <div class="border-3  mt-2">
+                        <div class="border-3 rounded-3 bord   p-2 mt-2">
                             <h5>@pizza.Name</h5>
                             <p>@pizza.Description</p>
 
                             <h5>@pizza.Price$</h5>
 
 
-                        </div>
                         <div class=" gap-2 d-sm-block d-md-block mb-3">
 
                                 @if (User.IsInRole("ADMIN"))
                                 {
 
-                                    <a href="@Url.Action("Update", "Pizza", new {id = pizza.Id})" class="btn btn-warning mt-sm-3 " role="button">Modifica</a>
+                                    <a href="@Url.Action("Update", "Pizza", new {id = pizza.Id})" class="btn btn-outline-warning mt-sm-3 " role="button">Modifica</a>
 
-                                    <a href="@Url.Action("Details", "Pizza", new {id = pizza.Id})" class="btn btn-warning mt-sm-3 " role="button">Details</a>
 
 
                                     <form asp-controller="Pizza" asp-action="Delete" asp-route-id="@pizza.Id" method="post">
@@ -105,20 +104,16 @@
                                         </button>
                                     </form>
                                 }
+                                    <a href="@Url.Action("Details", "Pizza", new {id = pizza.Id})" class="btn btn-outline-warning mt-sm-3 " role="button">Details</a>
                             </div>
+                        </div>
                     </div>
                   </div>
                    
                  }
             }
            
-         
-            
-
-
-
-
-                            <hr class="border border-danger border-2 opacity-50">
+        <hr class="border border-danger border-2 opacity-50">
     </div>
 </div>
 

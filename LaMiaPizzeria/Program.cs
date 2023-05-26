@@ -2,10 +2,12 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using LaMiaPizzeria.Database;
 var builder = WebApplication.CreateBuilder(args);
+//var connectionString = builder.Configuration.GetConnectionString("PizzaContext") ?? throw new InvalidOperationException("Connection string 'PizzaContext' not found.");
 
 builder.Services.AddDbContext<PizzaContext>();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<PizzaContext>();
 
 // Add services to the container.
