@@ -1,9 +1,24 @@
 ﻿@model List<Review>
 
+  <div class="container text-white">
+    <div class="row">
+        <h2 class="text-center">Cosa dicono di noi</h2>
+      <div class="col-12">
 
-@foreach(Review review in Model){
-    <div class=" text-white">
-    <p>@review.Name</p>
-    <p>@review.Description</p>
+        @foreach(Review review in Model)
+        {
+            <div class="bord rounded-2 p-3 mb-3 text-white">
+                <div class="border-bottom pb-3 mb-2">
+                <strong>User:</strong>
+                <span>@review.Name</span>
+                </div>
+                
+                <p>@review.Description</p>      
+            </div>
+         }
+         <div class="mt-5">
+                <a asp-controller="Review" asp-action="Create" class="btn btn-outline-light"> + </a>
+         </div>
+     </div>
     </div>
-}
+</div>
