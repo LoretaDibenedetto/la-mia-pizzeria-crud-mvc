@@ -35,12 +35,18 @@ body {
     background-size: cover;
     
 }
+
+
+
 a {
     cursor: pointer;
     
 }
+
+
+
 form input::placeholder{
-    color:darkgray;
+    color:white;
 }
 
 
